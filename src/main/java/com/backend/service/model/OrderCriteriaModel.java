@@ -21,7 +21,7 @@ public class OrderCriteriaModel implements Serializable {
 
     protected String number;
 
-    protected Date date;
+    protected String date;
 
     protected String description;
 
@@ -43,11 +43,11 @@ public class OrderCriteriaModel implements Serializable {
         this.number = number;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

@@ -37,7 +37,7 @@ public class OrderModel implements Serializable {
     protected String number;
 
     @Column(name = "DATE_")
-    protected Date date;
+    protected String date;
 
     @Column(name = "DESCRIPTION")
     protected String description;
