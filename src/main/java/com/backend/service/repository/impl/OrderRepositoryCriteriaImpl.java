@@ -47,8 +47,8 @@ public class OrderRepositoryCriteriaImpl implements OrderRepositoryCriteria {
 
     private List<Predicate> getWhereClause(OrderCriteriaModel orderCriteriaModel, CriteriaBuilder builder, Root<OrderModel> model) {
         List<Predicate> query = new ArrayList<>();
-        if (!StringUtils.isEmpty(orderCriteriaModel.getId())) {
-            query.add(builder.equal(model.get("Id"), orderCriteriaModel.getId()));
+        if (!StringUtils.isEmpty(orderCriteriaModel.getOrderId())) {
+            query.add(builder.equal(model.get("orderId"), orderCriteriaModel.getOrderId()));
         }
         if (!StringUtils.isEmpty(orderCriteriaModel.getDate())) {
             query.add(builder.equal(model.get("date"), orderCriteriaModel.getDate()));

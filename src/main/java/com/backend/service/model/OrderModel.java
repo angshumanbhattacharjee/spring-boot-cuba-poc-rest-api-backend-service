@@ -7,6 +7,7 @@ import java.util.UUID;
 import javax.persistence.*;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -18,20 +19,21 @@ import lombok.ToString;
 
 @Component
 @JsonInclude(value = Include.NON_NULL)
-@Table(name = "SALES_ORDER")
-@Entity(name = "sales$Order")
+@Table(name = "sales_order")
+@Entity
 @Data
 public class OrderModel implements Serializable {
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @Column(name = "ID")
-	private UUID Id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "order_Id")
+	private UUID orderId;
 
 	@Column(name = "NUMBER_")
     protected String number;

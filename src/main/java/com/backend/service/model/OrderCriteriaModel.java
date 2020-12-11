@@ -7,17 +7,15 @@ import org.springframework.stereotype.Component;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.UUID;
 
 @Component
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Entity
-public class OrderCriteriaModel implements Serializable {
+public class OrderCriteriaModel {
 
-    @Id
-    private UUID Id;
+
+    private UUID orderId;
 
     protected String number;
 
@@ -27,12 +25,12 @@ public class OrderCriteriaModel implements Serializable {
 
     protected String items;
 
-    public UUID getId() {
-        return Id;
+    public UUID getOrderId() {
+        return orderId;
     }
 
-    public void setId(UUID id) {
-        Id = id;
+    public void setOrderId(UUID orderId) {
+        this.orderId = orderId;
     }
 
     public String getNumber() {
