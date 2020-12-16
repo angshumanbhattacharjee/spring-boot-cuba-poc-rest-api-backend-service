@@ -24,18 +24,24 @@ public class OrderRepositoryCriteriaImpl implements OrderRepositoryCriteria {
     @Autowired
     private EntityManager entityManager;
 
+    /*
+    * Method used to fetch list of OrderModel objects
+    * using criteria query
+    * @Params orderCriteriaModel
+    * @Returns list of orderModel objects
+    * */
     @Override
-    public List<OrderModel> findByCriteria(OrderCriteriaModel orderCriteriaModel) throws ParseException {
+    public List<OrderModel> findByCriteria(OrderCriteriaModel orderCriteriaModel) {
         List<OrderModel> list = null;
         try {
             list = entityManager.createQuery(getCriteriaQuery(orderCriteriaModel)).getResultList();
         } catch (Exception exception) {
-            throw exception;
+            log.error("Error occurred in processing request : " + exception.getMessage());
         }
         return list;
     }
 
-    private CriteriaQuery<OrderModel> getCriteriaQuery(OrderCriteriaModel orderCriteriaModel) throws ParseException {
+    private CriteriaQuery<OrderModel> getCriteriaQuery(OrderCriteriaModel orderCriteriaModel) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<OrderModel> criteriaQuery = builder.createQuery(OrderModel.class);
         Root<OrderModel> model = criteriaQuery.from(OrderModel.class);
@@ -45,6 +51,12 @@ public class OrderRepositoryCriteriaImpl implements OrderRepositoryCriteria {
         return criteriaQuery;
     }
 
+    /*
+    * Method used to prepare the where clause
+    * based on orderCriteriaModel fields
+    * @Params orderCriteriaModel, CriteriaBuilder object, Root model object
+    * @Returns List of queries
+    * */
     private List<Predicate> getWhereClause(OrderCriteriaModel orderCriteriaModel, CriteriaBuilder builder, Root<OrderModel> model) {
         List<Predicate> query = new ArrayList<>();
         if (!StringUtils.isEmpty(orderCriteriaModel.getOrderId())) {

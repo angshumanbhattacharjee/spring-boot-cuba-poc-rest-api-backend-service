@@ -10,7 +10,7 @@ import java.util.UUID;
 @Repository
 public interface OrderRepository extends CrudRepository<OrderModel, UUID>, OrderRepositoryCriteria {
 
-    public OrderModel deleteOrderModelByOrderId(UUID orderId);
+    public Integer deleteByOrderId(UUID orderId);
 
     public OrderModel findByOrderId(UUID orderId);
 }

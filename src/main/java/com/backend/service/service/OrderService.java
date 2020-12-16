@@ -12,5 +12,5 @@ public interface OrderService {
 
     List<OrderModel> getOrdersByCriteria(OrderCriteriaModel orderCriteriaModel) throws Exception;
 
-    OrderModel deleteOrderById(UUID orderId) throws Exception;
+    String deleteOrderById(UUID orderId) throws Exception;
 }
